@@ -9,6 +9,15 @@ const menuItem =  mongoose.Schema({
     itemPrice:{
         type:Number,
         required:true
+    },
+    itemType:{
+        type:String,
+        required:true
+    },
+    itemQuantity:{
+        type:Number,
+        default:0,
+        required:true
     }
 })
 

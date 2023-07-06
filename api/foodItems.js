@@ -17,13 +17,26 @@ menu.get('/menuItems',async(request,response)=>{
 menu.post('/menuItems',async(request,response)=>{
     const data = await menuItemModel({
         itemName:request.body.itemName,
-        itemPrice:request.body.itemPrice
+        itemPrice:request.body.itemPrice,
+        itemType:request.body.itemType,
+        itemQuantity:request.body.itemQuantity
     })
     try{
         let dataSaved = data.save();
         response.status(200).send(data);
     }catch(err){
         response.status(404).send(err.message);
+    }
+});
+
+menu.patch('/updateQuantity',async(request,response)=>{
+    let id = request.body._id;
+    let quantity = request.body.itemQuantity;
+    let updateQuant = await menuItemModel.findByIdAndUpdate(id,{itemQuantity:quantity});
+    try{
+       response.status(200).send(updateQuant);
+    }catch(err){
+       response.status(404).send(err.message);
     }
 })
 
