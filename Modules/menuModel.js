@@ -15,6 +15,10 @@ const menu = mongoose.Schema({
         default:0,
         required:true
     },
+    productType:{
+        type:String,
+        required:true
+    },
     file:{
         type:String,
         required:true

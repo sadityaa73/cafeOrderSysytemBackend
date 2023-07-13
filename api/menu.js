@@ -39,6 +39,7 @@ menu.post('/menuList',async(request,response)=>{
         productName:request.body.productName,
         productPrice:request.body.productPrice,
         productQuantity:request.body.productQuantity,
+        productType:request.body.productType,
         file:image_url.url
     });
     try {
