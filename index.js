@@ -1,25 +1,28 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
+require('dotenv').config();
 const port = 3000;
 
 const app = express();
 
-
 app.use(cors());
 app.use(bodyParser.json());
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 
-const menuItems = require("./api/foodItems");
-app.use("/api/foodItems",menuItems);
+const list = require("./api/menu");
 
-const cart = require("./api/cart");
-app.use("/api/cart",cart);
+app.use("/api/menu", list);
 
-app.listen(port,(error)=>{
-    if(!error){
-        console.log("connection successfull!!");
-    }else{
-        console.log("connection error!");
-    }
-})
+app.listen(port, (error) => {
+  if (!error) {
+    console.log("connection successfull!!");
+  } else {
+    console.log("connection error!");
+  }
+});
