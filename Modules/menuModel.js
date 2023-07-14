@@ -12,7 +12,6 @@ const menu = mongoose.Schema({
     },
     productQuantity:{
         type:Number,
-        default:0,
         required:true
     },
     productType:{
