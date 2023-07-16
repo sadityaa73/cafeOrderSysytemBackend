@@ -19,6 +19,10 @@ const list = require("./api/menu");
 
 app.use("/api/menu", list);
 
+const cart = require("./api/cart");
+
+app.use('/api/cart',cart);
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("connection successfull!!");
